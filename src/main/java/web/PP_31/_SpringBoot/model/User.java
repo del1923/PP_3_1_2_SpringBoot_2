@@ -34,16 +34,16 @@ public class User {
     @Email(message = "формат: abc@defg.hi")
     @NotEmpty( message = "Не пустое" )
     @Column( name = "email")
-    private String eMail;
+    private String email;
 
     public User() {
     }
 
-    public User( String name, String surName, int age, String eMail) {
+    public User( String name, String surName, int age, String email) {
         this.name = name;
         this.surName = surName;
         this.age = age;
-        this.eMail = eMail;
+        this.email = email;
     }
 
     public int getId() {
@@ -79,10 +79,10 @@ public class User {
     }
 
     public String getEMail() {
-        return eMail;
+        return email;
     }
 
     public void setEMail(String eMail) {
-        this.eMail = eMail;
+        this.email = eMail;
     }
 }
