@@ -10,14 +10,14 @@ import java.util.List;
 @Controller
 public class HelloController {
 
-	@GetMapping(value = "/")
-	public String printWelcome(ModelMap model) {
-		List<String> messages = new ArrayList<>();
-		messages.add("Приложение выводит, добавляет,");
-		messages.add("удаляет, редактирует данные пользователей.");
-		messages.add("При первом запуске выводим базу пользователей.");
+    @GetMapping(value = "/")
+    public String printWelcome(ModelMap model) {
+        List<String> messages = new ArrayList<>();
+        messages.add("Приложение выводит, добавляет,");
+        messages.add("удаляет, редактирует данные пользователей.");
+        messages.add("При первом запуске выводим базу пользователей.");
 
-		model.addAttribute("messages", messages);
-		return "hello/index";
-	}
+        model.addAttribute("messages", messages);
+        return "hello/index";
+    }
 }

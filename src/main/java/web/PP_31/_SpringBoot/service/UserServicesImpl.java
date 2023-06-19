@@ -14,43 +14,44 @@ import java.util.Optional;
 public class UserServicesImpl implements UserServices {
 
     private final UserDao userDao;
+
     @Autowired
     public UserServicesImpl(UserDao userDao) {
         this.userDao = userDao;
     }
 
     @Override
-    @Transactional( readOnly = true )
+    @Transactional(readOnly = true)
     public List<User> getUserList() {
         return userDao.getUserList();
     }
 
     @Override
     @Transactional
-    public void addUser ( User user) {
-        userDao.addUser( user );
+    public void addUser(User user) {
+        userDao.addUser(user);
     }
 
     @Override
-    @Transactional( readOnly = true )
-    public User show ( int id ) {
-        return userDao.show( id );
-    }
-
-    @Override
-    @Transactional
-    public void update (int id, User user ) {
-        userDao.update( id, user );
+    @Transactional(readOnly = true)
+    public User show(int id) {
+        return userDao.show(id);
     }
 
     @Override
     @Transactional
-    public void delete ( int id ) {
-        userDao.delete( id );
+    public void update(int id, User user) {
+        userDao.update(id, user);
     }
 
     @Override
-    @Transactional( readOnly = true )
-    public Optional<User> showByEMail (String eMail ) {
-        return userDao.showByEMail( eMail ); } // Возвращаем еМайл из UserServ -> userDao.findByeMail( eMail )
+    @Transactional
+    public void delete(int id) {
+        userDao.delete(id);
+    }
+
+    @Override
+    public Optional<User> showByEMail(String eMail) {
+        return userDao.showByEMail(eMail);
+    } // Возвращаем еМайл из UserServ -> userDao.findByeMail( eMail )
 }

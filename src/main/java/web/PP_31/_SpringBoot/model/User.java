@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 
 @Entity
-@Table( name = "users" )
+@Table(name = "users")
 public class User {
 
     @Id
@@ -17,33 +17,33 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotEmpty( message = "Не пустое")
-    @Size( min = 3, max = 20, message = "3...20 символов")
+    @NotEmpty(message = "Не пустое")
+    @Size(min = 3, max = 20, message = "3...20 символов")
     @Column(name = "name")
     private String name;
 
-    @NotEmpty( message = "Не пустое" )
+    @NotEmpty(message = "Не пустое")
     @Column(name = "surname")
     private String surName;
 
     @Min(value = 1, message = "1...100")
     @Max(value = 100, message = "1...100")
-    @Column( name = "age")
+    @Column(name = "age")
     private int age;
 
     @Email(message = "формат: abc@defg.hi")
-    @NotEmpty( message = "Не пустое" )
-    @Column( name = "email")
-    private String email;
+    @NotEmpty(message = "Не пустое")
+    @Column(name = "eMail")
+    private String eMail;
 
     public User() {
     }
 
-    public User( String name, String surName, int age, String email) {
+    public User(String name, String surName, int age, String eMail) {
         this.name = name;
         this.surName = surName;
         this.age = age;
-        this.email = email;
+        this.eMail = eMail;
     }
 
     public int getId() {
@@ -78,11 +78,13 @@ public class User {
         this.age = age;
     }
 
-    public String getEMail() {
-        return email;
+
+    public String geteMail() {
+        return eMail;
     }
 
-    public void setEMail(String eMail) {
-        this.email = eMail;
+    public void seteMail(String eMail) {
+        this.eMail = eMail;
     }
+
 }

@@ -18,6 +18,7 @@ public class UsersController {
     private final UserValidator userValidator;
 
     private final UserServices userServices;
+
     @Autowired
     public UsersController(UserValidator userValidator, UserServices userServices) {
         this.userValidator = userValidator;
@@ -26,42 +27,45 @@ public class UsersController {
 
 
     @GetMapping
-    public String usersList ( Model model ) {
-        model.addAttribute( "usersList", userServices.getUserList());
+    public String usersList(Model model) {
+        model.addAttribute("usersList", userServices.getUserList());
         return "users/usersList";
     }
+
     @GetMapping("/newUser")
-    public String newUser(@ModelAttribute("user") User user ) {
+    public String newUser(@ModelAttribute("user") User user) {
+        System.out.println("пришли в контроллер");
         return "users/newUser";
     }
 
     @PostMapping()
-    public String addUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult ) {
-        userValidator.validate( user, bindingResult );
-        if ( bindingResult.hasErrors() ) {
+    public String addUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
+        userValidator.validate(user, bindingResult);
+        if (bindingResult.hasErrors()) {
             return "/users/newUser";
         }
-        userServices.addUser( user );
+        userServices.addUser(user);
         return "redirect:users";
     }
 
     @GetMapping("/{id}/editUser")
-    public String editUser( Model model, @PathVariable ("id") int id ) {
-        model.addAttribute( "user",userServices.show(id));
+    public String editUser(Model model, @PathVariable("id") int id) {
+        model.addAttribute("user", userServices.show(id));
         return "users/editUser";
     }
+
     @PatchMapping("/{id}")
-    public String updateUser( @ModelAttribute( "user" ) @Valid User user, BindingResult bindingResult, @PathVariable("id") int id ) {
-        userValidator.validate( user, bindingResult );
-        if ( bindingResult.hasErrors() ) {
+    public String updateUser(@ModelAttribute("user") @Valid User user, BindingResult bindingResult, @PathVariable("id") int id) {
+        userValidator.validate(user, bindingResult);
+        if (bindingResult.hasErrors()) {
             return "/users/editUser";
         }
-        userServices.update( id , user );
+        userServices.update(id, user);
         return "redirect:/users";
     }
 
     @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable ("id") int id ) {
+    public String deleteUser(@PathVariable("id") int id) {
         userServices.delete(id);
         return "redirect:/users";
     }
