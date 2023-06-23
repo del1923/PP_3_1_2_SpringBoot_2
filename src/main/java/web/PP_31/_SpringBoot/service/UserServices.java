@@ -29,19 +29,23 @@ public class UserServices {
         return showPerson.orElse(null);
     }
 
+    public List<User> showByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     @Transactional
     public void addUser(User user) {
         userRepository.save(user);
     }
 
     @Transactional
-    public void update(int id, User userUpdate){
+    public void update(int id, User userUpdate) {
         userUpdate.setId(id);
         userRepository.save(userUpdate);
     }
+
     @Transactional
     public void delete(int id) {
         userRepository.deleteById(id);
     }
-
 }

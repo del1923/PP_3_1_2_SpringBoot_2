@@ -7,11 +7,11 @@ import org.springframework.validation.Validator;
 import web.PP_31._SpringBoot.model.User;
 import web.PP_31._SpringBoot.service.UserServices;
 
-
 @Component
 public class UserValidator implements Validator {
 
     private final UserServices userServices;
+
     @Autowired
     public UserValidator(UserServices userServices) {
         this.userServices = userServices;
@@ -24,11 +24,9 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-//        User user = (User) target; //даункастим к Юзеру
-//        System.out.println( userServices.showByEMail( user.geteMail() ) );
-//        if (userServices.showByEMail(user.geteMail()).isPresent()) {
-//            System.out.println( " внутри IF " );
-//            errors.rejectValue( "eMail", "", "e-mail уже используется");
-//       }
+        User user = (User) target; //даункастим к Юзеру
+        if (!(userServices.showByEmail(user.getEmail())).isEmpty()) {
+            errors.rejectValue("eMail", "", "e-mail уже используется");
+        }
     }
 }

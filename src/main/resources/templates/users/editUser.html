@@ -22,8 +22,8 @@
     <br>
     <br>
     <label for="eMail"> Е-майл: </label>
-    <input type="text" th:field="*{eMail}" id="eMail"/>
-    <div style="color: coral" th:if="${#fields.hasErrors('eMail')}" th:errors="*{eMail}">error</div>
+    <input type="text" th:field="*{email}" id="eMail"/>
+    <div style="color: coral" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">error</div>
     <br>
     <br>
     <input type="submit" value="Добавить">

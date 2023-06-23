@@ -33,17 +33,17 @@ public class User {
 
     @Email(message = "формат: abc@defg.hi")
     @NotEmpty(message = "Не пустое")
-    @Column(name = "eMail")
-    private String eMail;
+    @Column(name = "email")
+    private String email;
 
     public User() {
     }
 
-    public User(String name, String surName, int age, String eMail) {
+    public User(String name, String surName, int age, String email) {
         this.name = name;
         this.surName = surName;
         this.age = age;
-        this.eMail = eMail;
+        this.email = email;
     }
 
     public int getId() {
@@ -78,13 +78,11 @@ public class User {
         this.age = age;
     }
 
-
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
-
 }

@@ -34,7 +34,6 @@ public class UsersController {
 
     @GetMapping("/newUser")
     public String newUser(@ModelAttribute("user") User user) {
-        System.out.println("пришли в контроллер");
         return "users/newUser";
     }
 
