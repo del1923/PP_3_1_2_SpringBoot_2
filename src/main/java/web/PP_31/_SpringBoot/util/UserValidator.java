@@ -24,11 +24,11 @@ public class UserValidator implements Validator {
 
     @Override
     public void validate(Object target, Errors errors) {
-        User user = (User) target; //даункастим к Юзеру
-        System.out.println( userServices.showByEMail( user.geteMail() ) );
-        if (userServices.showByEMail(user.geteMail()).isPresent()) {
-            System.out.println( " внутри IF " );
-            errors.rejectValue( "eMail", "", "e-mail уже используется");
-       }
+//        User user = (User) target; //даункастим к Юзеру
+//        System.out.println( userServices.showByEMail( user.geteMail() ) );
+//        if (userServices.showByEMail(user.geteMail()).isPresent()) {
+//            System.out.println( " внутри IF " );
+//            errors.rejectValue( "eMail", "", "e-mail уже используется");
+//       }
     }
 }
